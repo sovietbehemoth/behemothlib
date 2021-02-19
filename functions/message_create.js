@@ -14,7 +14,7 @@ async function message_send(channel, content) {
             body: JSON.stringify(contentjs),          
         });
         const response = await res.json();
-        console.log(response);
+        errorhandler(response.code);
     } catch (error) {
         console.log(error);
     }
