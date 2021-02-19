@@ -52,7 +52,7 @@ function CLIENT_START(call = "s", wait = "r") {
                                     if (content.startsWith("-/")) {
                                         const args = content.split("-/")[1].split(" ");
                                         const command = args[0];
-                                        main(command);
+                                        main(command, args);
                                     }
                                     break;
                             }
