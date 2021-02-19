@@ -1,13 +1,20 @@
-import axios from 'axios';
 import token from "../auth.js";
+import fetch from 'node-fetch';
 
-const message_send = async (channel, content) => {
+async function message_send(channel, content) {
     try {
-        const contentjs = { "content": content, "tts": false };
-        const headers = { "Content-Type": "application/json", "Authorization": token };
-        await axios.post('https://www.discord.com/api/v8/channels/' + channel + '/messages', contentjs, headers, send => {
-        console.log(send);
-    });
+        const contentjs = {
+            "content": content,
+            "tts": false,
+        }
+        const headers = { 'Content-Type': 'application/json', 'Authorization': `Bot ${token}` };
+        const res = await fetch(`https://discord.com/api/channels/${channel}/messages`, {
+            method: 'POST',
+            headers,
+            body: JSON.stringify(contentjs),          
+        });
+        const response = await res.json();
+        console.log(response);
     } catch (error) {
         console.log(error);
     }
