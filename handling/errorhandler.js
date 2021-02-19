@@ -30,6 +30,9 @@ function errorhandler(code) {
         case 10014:
             console.log("BehemothLib: Emoji not found");
             break;
+        case 50013:
+            console.log("BehemothLib: Insufficient permissions");
+            break;
     }
 }
 export default errorhandler;
